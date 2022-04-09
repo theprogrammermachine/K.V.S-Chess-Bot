@@ -34,6 +34,7 @@ let weatherHumidityUpdate = {
 let piecesStates = {
   whiteRokh: {
     id: 'whiteRokh',
+    team: 'white',
     type: "rook",
     position: { x: 0, y: 0 },
     icon: {
@@ -43,6 +44,7 @@ let piecesStates = {
   },
   whiteAsb: {
     id: 'whiteAsb',
+    team: 'white',
     type: 'knight',
     position: { x: 1, y: 0 },
     icon: {
@@ -52,6 +54,7 @@ let piecesStates = {
   },
   whiteFil: {
     id: 'whiteFil',
+    team: 'white',
     type: 'bishop',
     position: { x: 2, y: 0 },
     icon: {
@@ -61,6 +64,7 @@ let piecesStates = {
   },
   whiteVazir: {
     id: 'whiteVazir',
+    team: 'white',
     type: 'queen',
     position: { x: 3, y: 0 },
     icon: {
@@ -70,6 +74,7 @@ let piecesStates = {
   },
   whiteShah: {
     id: 'whiteShah',
+    team: 'white',
     type: 'king',
     position: { x: 4, y: 0 },
     icon: {
@@ -79,6 +84,7 @@ let piecesStates = {
   },
   whiteFil2: {
     id: 'whiteFil2',
+    team: 'white',
     type: 'bishop',
     position: { x: 5, y: 0 },
     icon: {
@@ -88,6 +94,7 @@ let piecesStates = {
   },
   whiteAsb2: {
     id: 'whiteAsb2',
+    team: 'white',
     type: 'knight',
     position: { x: 6, y: 0 },
     icon: {
@@ -97,6 +104,7 @@ let piecesStates = {
   },
   whiteRokh2: {
     id: 'whiteRokh2',
+    team: 'white',
     type: 'rook',
     position: { x: 7, y: 0 },
     icon: {
@@ -106,6 +114,7 @@ let piecesStates = {
   },
   whiteSarbaz: {
     id: 'whiteSarbaz',
+    team: 'white',
     type: 'pawn',
     position: { x: 0, y: 1 },
     icon: {
@@ -115,6 +124,7 @@ let piecesStates = {
   },
   whiteSarbaz2: {
     id: 'whiteSarbaz2',
+    team: 'white',
     type: 'pawn',
     position: { x: 1, y: 1 },
     icon: {
@@ -124,6 +134,7 @@ let piecesStates = {
   },
   whiteSarbaz3: {
     id: 'whiteSarbaz3',
+    team: 'white',
     type: 'pawn',
     position: { x: 2, y: 1 },
     icon: {
@@ -133,6 +144,7 @@ let piecesStates = {
   },
   whiteSarbaz4: {
     id: 'whiteSarbaz4',
+    team: 'white',
     type: 'pawn',
     position: { x: 3, y: 1 },
     icon: {
@@ -142,6 +154,7 @@ let piecesStates = {
   },
   whiteSarbaz5: {
     id: 'whiteSarbaz5',
+    team: 'white',
     type: 'pawn',
     position: { x: 4, y: 1 },
     icon: {
@@ -151,6 +164,7 @@ let piecesStates = {
   },
   whiteSarbaz6: {
     id: 'whiteSarbaz6',
+    team: 'white',
     type: 'pawn',
     position: { x: 5, y: 1 },
     icon: {
@@ -160,6 +174,7 @@ let piecesStates = {
   },
   whiteSarbaz7: {
     id: 'whiteSarbaz7',
+    team: 'white',
     type: 'pawn',
     position: { x: 6, y: 1 },
     icon: {
@@ -169,6 +184,7 @@ let piecesStates = {
   },
   whiteSarbaz8: {
     id: 'whiteSarbaz8',
+    team: 'white',
     type: 'pawn',
     position: { x: 7, y: 1 },
     icon: {
@@ -179,6 +195,7 @@ let piecesStates = {
 
   blackRokh: {
     id: 'blackRokh',
+    team: 'black',
     type: 'rook',
     position: { x: 0, y: 7 },
     icon: {
@@ -188,6 +205,7 @@ let piecesStates = {
   },
   blackAsb: {
     id: 'blackAsb',
+    team: 'black',
     type: 'knight',
     position: { x: 1, y: 7 },
     icon: {
@@ -197,6 +215,7 @@ let piecesStates = {
   },
   blackFil: {
     id: 'blackFil',
+    team: 'black',
     type: 'bishop',
     position: { x: 2, y: 7 },
     icon: {
@@ -206,6 +225,7 @@ let piecesStates = {
   },
   blackVazir: {
     id: 'blackVazir',
+    team: 'black',
     type: 'queen',
     position: { x: 3, y: 7 },
     icon: {
@@ -215,6 +235,7 @@ let piecesStates = {
   },
   blackShah: {
     id: 'blackShah',
+    team: 'black',
     type: 'king',
     position: { x: 4, y: 7 },
     icon: {
@@ -224,6 +245,7 @@ let piecesStates = {
   },
   blackFil2: {
     id: 'blackFil2',
+    team: 'black',
     type: 'bishop',
     position: { x: 5, y: 7 },
     icon: {
@@ -233,6 +255,7 @@ let piecesStates = {
   },
   blackAsb2: {
     id: 'blackAsb2',
+    team: 'black',
     type: 'knight',
     position: { x: 6, y: 7 },
     icon: {
@@ -242,6 +265,7 @@ let piecesStates = {
   },
   blackRokh2: {
     id: 'blackRokh2',
+    team: 'black',
     type: 'rook',
     position: { x: 7, y: 7 },
     icon: {
@@ -251,6 +275,7 @@ let piecesStates = {
   },
   blackSarbaz: {
     id: 'blackSarbaz',
+    team: 'black',
     type: 'pawn',
     position: { x: 0, y: 6 },
     icon: {
@@ -260,6 +285,7 @@ let piecesStates = {
   },
   blackSarbaz2: {
     id: 'blackSarbaz2',
+    team: 'black',
     type: 'pawn',
     position: { x: 1, y: 6 },
     icon: {
@@ -269,6 +295,7 @@ let piecesStates = {
   },
   blackSarbaz3: {
     id: 'blackSarbaz3',
+    team: 'black',
     type: 'pawn',
     position: { x: 2, y: 6 },
     icon: {
@@ -278,6 +305,7 @@ let piecesStates = {
   },
   blackSarbaz4: {
     id: 'blackSarbaz4',
+    team: 'black',
     type: 'pawn',
     position: { x: 3, y: 6 },
     icon: {
@@ -287,6 +315,7 @@ let piecesStates = {
   },
   blackSarbaz5: {
     id: 'blackSarbaz5',
+    team: 'black',
     type: 'pawn',
     position: { x: 4, y: 6 },
     icon: {
@@ -296,6 +325,7 @@ let piecesStates = {
   },
   blackSarbaz6: {
     id: 'blackSarbaz6',
+    team: 'black',
     type: 'pawn',
     position: { x: 5, y: 6 },
     icon: {
@@ -305,6 +335,7 @@ let piecesStates = {
   },
   blackSarbaz7: {
     id: 'blackSarbaz7',
+    team: 'black',
     type: 'pawn',
     position: { x: 6, y: 6 },
     icon: {
@@ -314,6 +345,7 @@ let piecesStates = {
   },
   blackSarbaz8: {
     id: 'blackSarbaz8',
+    team: 'black',
     type: 'pawn',
     position: { x: 7, y: 6 },
     icon: {

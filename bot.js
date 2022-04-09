@@ -192,9 +192,15 @@ let reservedPieceId = {};
             for (let piece in Object.values(piecesStates)) {
               if (
                 piecesStates[elementId].position.x === x &&
-                piecesStates[elementId].position.y === y
+                piecesStates[elementId].position.y === y &&
+                ((piecesStates[elementId].id.startsWith("black") &&
+                  !reservedPieceId[widgetWorkerId].startsWith("black")) ||
+                  (!piecesStates[elementId].id.startsWith("black") &&
+                    reservedPieceId[widgetWorkerId].startsWith("black")))
               ) {
                 piece.killed = true;
+                piecesStates[elementId].position.x = -1000;
+                piecesStates[elementId].position.y = -1000;
                 updates.push({
                   elId: piecesStates[elementId].id,
                   property: "top",
@@ -288,20 +294,113 @@ let reservedPieceId = {};
               reservedPieceId[widgetWorkerId] = elementId;
               updates = updates.concat(reservedActionsOfMe);
             } else if (piecesStates[elementId].type === "rook") {
-              [0, 1, 2, 3, 4, 5, 6, 7].forEach((y) => {
-                [0, 1, 2, 3, 4, 5, 6, 7].forEach((x) => {
-                  if (
-                    y === piecesStates[elementId].position.y ||
-                    x === piecesStates[elementId].position.x
-                  ) {
-                    updates.push({
-                      elId: `block-${x}-${y}`,
+              for (let i = piecesStates[elementId].position.x + 1; i < 8; i++) {
+                let anyWall = Object.values(piecesStates).filter((piece) => {
+                  return (
+                    piece.position.x === i &&
+                    piece.position.y === piecesStates[elementId].position.y
+                  );
+                });
+                if (anyWall.length > 0) {
+                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                    reservedActionsOfMe.push({
+                      elId: `block-${i}-${piecesStates[elementId].position.y}`,
                       property: "background",
                       newValue: "rgba(0, 255, 0, 1)",
                     });
                   }
+                  break;
+                } else {
+                  reservedActionsOfMe.push({
+                    elId: `block-${i}-${piecesStates[elementId].position.y}`,
+                    property: "background",
+                    newValue: "rgba(0, 255, 0, 1)",
+                  });
+                }
+              }
+              for (
+                let i = piecesStates[elementId].position.x - 1;
+                i >= 0;
+                i--
+              ) {
+                let anyWall = Object.values(piecesStates).filter((piece) => {
+                  return (
+                    piece.position.x === i &&
+                    piece.position.y === piecesStates[elementId].position.y
+                  );
                 });
-              });
+                if (anyWall.length > 0) {
+                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                    reservedActionsOfMe.push({
+                      elId: `block-${i}-${piecesStates[elementId].position.y}`,
+                      property: "background",
+                      newValue: "rgba(0, 255, 0, 1)",
+                    });
+                  }
+                  break;
+                } else {
+                  reservedActionsOfMe.push({
+                    elId: `block-${i}-${piecesStates[elementId].position.y}`,
+                    property: "background",
+                    newValue: "rgba(0, 255, 0, 1)",
+                  });
+                }
+              }
+              for (let i = piecesStates[elementId].position.y + 1; i < 8; i++) {
+                let anyWall = Object.values(piecesStates).filter((piece) => {
+                  return (
+                    piece.position.x === piecesStates[elementId].position.x &&
+                    piece.position.y === i
+                  );
+                });
+                if (anyWall.length > 0) {
+                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                    reservedActionsOfMe.push({
+                      elId: `block-${piecesStates[elementId].position.x}-${i}`,
+                      property: "background",
+                      newValue: "rgba(0, 255, 0, 1)",
+                    });
+                  }
+                  break;
+                } else {
+                  reservedActionsOfMe.push({
+                    elId: `block-${piecesStates[elementId].position.x}-${i}`,
+                    property: "background",
+                    newValue: "rgba(0, 255, 0, 1)",
+                  });
+                }
+              }
+              for (
+                let i = piecesStates[elementId].position.y - 1;
+                i >= 0;
+                i--
+              ) {
+                let anyWall = Object.values(piecesStates).filter((piece) => {
+                  return (
+                    piece.position.x === piecesStates[elementId].position.x &&
+                    piece.position.y === i
+                  );
+                });
+                if (anyWall.length > 0) {
+                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                    reservedActionsOfMe.push({
+                      elId: `block-${piecesStates[elementId].position.x}-${i}`,
+                      property: "background",
+                      newValue: "rgba(0, 255, 0, 1)",
+                    });
+                  }
+                  break;
+                } else {
+                  reservedActionsOfMe.push({
+                    elId: `block-${piecesStates[elementId].position.x}-${i}`,
+                    property: "background",
+                    newValue: "rgba(0, 255, 0, 1)",
+                  });
+                }
+              }
+              reservedActions[widgetWorkerId] = reservedActionsOfMe;
+              reservedPieceId[widgetWorkerId] = elementId;
+              updates = updates.concat(reservedActionsOfMe);
             }
           }
         }
