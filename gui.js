@@ -20,228 +20,6 @@ let clockTypeMemory = {
   memoryId: "clockType",
   value: "clock",
 };
-let onClockBoxClick = {
-  elId: "clockBox",
-  codes: [
-    {
-      type: "conditionList",
-      conditions: [
-        {
-          item1: {
-            type: "memory",
-            memoryId: "clockType",
-          },
-          item2: {
-            type: "constant",
-            constant: "clock",
-          },
-          type: "e",
-          then: [
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockBox",
-              property: "transform",
-              newValue: "rotateY(-360deg)",
-            },
-            {
-              type: "straight",
-              updateType: "memory",
-              memoryId: "clockType",
-              value: "weather",
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockBackImage",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockBackShadow",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "secondHand",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "minuteHand",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "hourHand",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockMsg",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "weather",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "weatherMsg",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "humidity",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "weatherHumidity",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-          ],
-        },
-        {
-          item1: {
-            type: "memory",
-            memoryId: "clockType",
-          },
-          item2: {
-            type: "constant",
-            constant: "weather",
-          },
-          type: "e",
-          then: [
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockBox",
-              property: "transform",
-              newValue: "rotateY(0deg)",
-            },
-            {
-              type: "straight",
-              updateType: "memory",
-              memoryId: "clockType",
-              value: "clock",
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockBackImage",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockBackShadow",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "secondHand",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "minuteHand",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "hourHand",
-              property: "display",
-              newValue: "block",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "clockMsg",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "weather",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "weatherMsg",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "humidity",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-            {
-              type: "straight",
-              updateType: "gui",
-              elId: "weatherHumidity",
-              property: "display",
-              newValue: "none",
-              delay: 240,
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
 let weatherTempUpdate = {
   elId: "weatherMsg",
   property: "styledContent",
@@ -255,139 +33,294 @@ let weatherHumidityUpdate = {
 
 let piecesStates = {
   whiteRokh: {
+    id: 'whiteRokh',
+    type: "rook",
     position: { x: 0, y: 0 },
     icon: {
       url: "https://audioplayer.kasperian.cloud/rook.png",
     },
+    killed: false
   },
-  whiteAsb: { position: { x: 1, y: 0 },
+  whiteAsb: {
+    id: 'whiteAsb',
+    type: 'knight',
+    position: { x: 1, y: 0 },
     icon: {
       url: "https://audioplayer.kasperian.cloud/knight.png",
-    }, },
-  whiteFil: { position: { x: 2, y: 0 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/bishop.png",
-  }, },
-  whiteVazir: { position: { x: 3, y: 0 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/queen.png",
-  }, },
-  whiteShah: { position: { x: 4, y: 0 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/king.png",
-  }, },
-  whiteFil2: { position: { x: 5, y: 0 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/bishop.png",
-  }, },
-  whiteAsb2: { position: { x: 6, y: 0 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/knight.png",
-  }, },
-  whiteRokh2: { position: { x: 7, y: 0 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/rook.png",
-  }, },
-  whiteSarbaz: { position: { x: 0, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
-  whiteSarbaz2: { position: { x: 1, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
-  whiteSarbaz3: { position: { x: 2, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
-  whiteSarbaz4: { position: { x: 3, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
-  whiteSarbaz5: { position: { x: 4, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
-  whiteSarbaz6: { position: { x: 5, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
-  whiteSarbaz7: { position: { x: 6, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
-  whiteSarbaz8: { position: { x: 7, y: 1 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawn.png",
-  }, },
+    },
+    killed: false
+  },
+  whiteFil: {
+    id: 'whiteFil',
+    type: 'bishop',
+    position: { x: 2, y: 0 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/bishop.png",
+    },
+    killed: false
+  },
+  whiteVazir: {
+    id: 'whiteVazir',
+    type: 'queen',
+    position: { x: 3, y: 0 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/queen.png",
+    },
+    killed: false
+  },
+  whiteShah: {
+    id: 'whiteShah',
+    type: 'king',
+    position: { x: 4, y: 0 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/king.png",
+    },
+    killed: false
+  },
+  whiteFil2: {
+    id: 'whiteFil2',
+    type: 'bishop',
+    position: { x: 5, y: 0 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/bishop.png",
+    },
+    killed: false
+  },
+  whiteAsb2: {
+    id: 'whiteAsb2',
+    type: 'knight',
+    position: { x: 6, y: 0 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/knight.png",
+    },
+    killed: false
+  },
+  whiteRokh2: {
+    id: 'whiteRokh2',
+    type: 'rook',
+    position: { x: 7, y: 0 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/rook.png",
+    },
+    killed: false
+  },
+  whiteSarbaz: {
+    id: 'whiteSarbaz',
+    type: 'pawn',
+    position: { x: 0, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
+  whiteSarbaz2: {
+    id: 'whiteSarbaz2',
+    type: 'pawn',
+    position: { x: 1, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
+  whiteSarbaz3: {
+    id: 'whiteSarbaz3',
+    type: 'pawn',
+    position: { x: 2, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
+  whiteSarbaz4: {
+    id: 'whiteSarbaz4',
+    type: 'pawn',
+    position: { x: 3, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
+  whiteSarbaz5: {
+    id: 'whiteSarbaz5',
+    type: 'pawn',
+    position: { x: 4, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
+  whiteSarbaz6: {
+    id: 'whiteSarbaz6',
+    type: 'pawn',
+    position: { x: 5, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
+  whiteSarbaz7: {
+    id: 'whiteSarbaz7',
+    type: 'pawn',
+    position: { x: 6, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
+  whiteSarbaz8: {
+    id: 'whiteSarbaz8',
+    type: 'pawn',
+    position: { x: 7, y: 1 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawn.png",
+    },
+    killed: false
+  },
 
-  
   blackRokh: {
+    id: 'blackRokh',
+    type: 'rook',
     position: { x: 0, y: 7 },
     icon: {
       url: "https://audioplayer.kasperian.cloud/rookBlack.png",
     },
+    killed: false
   },
-  blackAsb: { position: { x: 1, y: 7 },
+  blackAsb: {
+    id: 'blackAsb',
+    type: 'knight',
+    position: { x: 1, y: 7 },
     icon: {
       url: "https://audioplayer.kasperian.cloud/knightBlack.png",
-    }, },
-  blackFil: { position: { x: 2, y: 7 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/bishopBlack.png",
-  }, },
-  blackVazir: { position: { x: 3, y: 7 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/queenBlack.png",
-  }, },
-  blackShah: { position: { x: 4, y: 7 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/kingBlack.png",
-  }, },
-  blackFil2: { position: { x: 5, y: 7 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/bishopBlack.png",
-  }, },
-  blackAsb2: { position: { x: 6, y: 7 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/knightBlack.png",
-  }, },
-  blackRokh2: { position: { x: 7, y: 7 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/rookBlack.png",
-  }, },
-  blackSarbaz: { position: { x: 0, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
-  blackSarbaz2: { position: { x: 1, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
-  blackSarbaz3: { position: { x: 2, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
-  blackSarbaz4: { position: { x: 3, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
-  blackSarbaz5: { position: { x: 4, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
-  blackSarbaz6: { position: { x: 5, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
-  blackSarbaz7: { position: { x: 6, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
-  blackSarbaz8: { position: { x: 7, y: 6 },
-  icon: {
-    url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
-  }, },
+    },
+    killed: false
+  },
+  blackFil: {
+    id: 'blackFil',
+    type: 'bishop',
+    position: { x: 2, y: 7 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/bishopBlack.png",
+    },
+    killed: false
+  },
+  blackVazir: {
+    id: 'blackVazir',
+    type: 'queen',
+    position: { x: 3, y: 7 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/queenBlack.png",
+    },
+    killed: false
+  },
+  blackShah: {
+    id: 'blackShah',
+    type: 'king',
+    position: { x: 4, y: 7 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/kingBlack.png",
+    },
+    killed: false
+  },
+  blackFil2: {
+    id: 'blackFil2',
+    type: 'bishop',
+    position: { x: 5, y: 7 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/bishopBlack.png",
+    },
+    killed: false
+  },
+  blackAsb2: {
+    id: 'blackAsb2',
+    type: 'knight',
+    position: { x: 6, y: 7 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/knightBlack.png",
+    },
+    killed: false
+  },
+  blackRokh2: {
+    id: 'blackRokh2',
+    type: 'rook',
+    position: { x: 7, y: 7 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/rookBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz: {
+    id: 'blackSarbaz',
+    type: 'pawn',
+    position: { x: 0, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz2: {
+    id: 'blackSarbaz2',
+    type: 'pawn',
+    position: { x: 1, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz3: {
+    id: 'blackSarbaz3',
+    type: 'pawn',
+    position: { x: 2, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz4: {
+    id: 'blackSarbaz4',
+    type: 'pawn',
+    position: { x: 3, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz5: {
+    id: 'blackSarbaz5',
+    type: 'pawn',
+    position: { x: 4, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz6: {
+    id: 'blackSarbaz6',
+    type: 'pawn',
+    position: { x: 5, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz7: {
+    id: 'blackSarbaz7',
+    type: 'pawn',
+    position: { x: 6, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
+  blackSarbaz8: {
+    id: 'blackSarbaz8',
+    type: 'pawn',
+    position: { x: 7, y: 6 },
+    icon: {
+      url: "https://audioplayer.kasperian.cloud/pawnBlack.png",
+    },
+    killed: false
+  },
 };
 
 let chessWidgetInitGui = {
@@ -417,6 +350,7 @@ let chessWidgetInitGui = {
           children: [0, 1, 2, 3, 4, 5, 6, 7].map((x) => {
             return {
               type: "Box",
+              id: 'block-' + x + '-' + y,
               width: "12.5%",
               height: "12.5%",
               position: "absolute",
@@ -439,24 +373,16 @@ let chessWidgetInitGui = {
             };
           }),
         };
-      }),
-    },
-    {
-      type: "Box",
-      position: "relative",
-      width: "100%",
-      height: "100%",
-      children: Object.values(piecesStates).map(piece => (
-        {
-          type: "Image",
-          position: "absolute",
-          left: `calc(${piece.position.x} * 12.5%)`,
-          top: `calc(${piece.position.y} * 12.5% - 2%)`,
-          width: "12.5%",
-          height: "10%",
-          src: piece.icon.url,
-        }
-      ))
+      }).concat(Object.values(piecesStates).map((piece) => ({
+        type: "Image",
+        id: piece.id,
+        position: "absolute",
+        left: `calc(${piece.position.x} * 12.5%)`,
+        top: `calc(${piece.position.y} * 12.5% - 2%)`,
+        width: "12.5%",
+        height: "10%",
+        src: piece.icon.url,
+      }))),
     },
   ],
 };
@@ -465,9 +391,9 @@ module.exports = {
   weatherHumidityUpdate: weatherHumidityUpdate,
   weatherTempUpdate: weatherTempUpdate,
   clockTypeMemory: clockTypeMemory,
-  onClockBoxClick: onClockBoxClick,
   timeHourMirror: timeHourMirror,
   timeMinMirror: timeMinMirror,
   timeSecMirror: timeSecMirror,
   chessWidgetInitGui: chessWidgetInitGui,
+  piecesStates: piecesStates
 };
