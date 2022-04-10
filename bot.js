@@ -302,7 +302,10 @@ let reservedPieceId = {};
                   );
                 });
                 if (anyWall.length > 0) {
-                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                  if (
+                    anyWall[0].team !== piecesStates[elementId].team &&
+                    anyWall[0].type !== "king"
+                  ) {
                     reservedActionsOfMe.push({
                       elId: `block-${i}-${piecesStates[elementId].position.y}`,
                       property: "background",
@@ -330,7 +333,10 @@ let reservedPieceId = {};
                   );
                 });
                 if (anyWall.length > 0) {
-                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                  if (
+                    anyWall[0].team !== piecesStates[elementId].team &&
+                    anyWall[0].type !== "king"
+                  ) {
                     reservedActionsOfMe.push({
                       elId: `block-${i}-${piecesStates[elementId].position.y}`,
                       property: "background",
@@ -354,7 +360,10 @@ let reservedPieceId = {};
                   );
                 });
                 if (anyWall.length > 0) {
-                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                  if (
+                    anyWall[0].team !== piecesStates[elementId].team &&
+                    anyWall[0].type !== "king"
+                  ) {
                     reservedActionsOfMe.push({
                       elId: `block-${piecesStates[elementId].position.x}-${i}`,
                       property: "background",
@@ -382,7 +391,10 @@ let reservedPieceId = {};
                   );
                 });
                 if (anyWall.length > 0) {
-                  if (anyWall[0].team !== piecesStates[elementId].team) {
+                  if (
+                    anyWall[0].team !== piecesStates[elementId].team &&
+                    anyWall[0].type !== "king"
+                  ) {
                     reservedActionsOfMe.push({
                       elId: `block-${piecesStates[elementId].position.x}-${i}`,
                       property: "background",
@@ -398,6 +410,60 @@ let reservedPieceId = {};
                   });
                 }
               }
+              reservedActions[widgetWorkerId] = reservedActionsOfMe;
+              reservedPieceId[widgetWorkerId] = elementId;
+              updates = updates.concat(reservedActionsOfMe);
+            } else if (piecesStates[elementId].type === "knight") {
+              const validationChoice = (x, y) => {
+                let anyPieces = Object.values(piecesStates).filter(piece => {
+                    return (
+                        (piece.position.x === x &&
+                        piece.position.y === y) &&
+                        (piece.type === "king" ||
+                        piece.team === piecesStates[elementId].team)
+                    );
+                });
+                if (anyPieces.length === 0) {
+                  reservedActionsOfMe.push({
+                    elId: `block-${x}-${y}`,
+                    property: "background",
+                    newValue: "rgba(0, 255, 0, 1)",
+                  });
+                }
+              };
+
+              validationChoice(
+                piecesStates[elementId].position.x - 1,
+                piecesStates[elementId].position.y - 2
+              );
+              validationChoice(
+                piecesStates[elementId].position.x + 1,
+                piecesStates[elementId].position.y - 2
+              );
+              validationChoice(
+                piecesStates[elementId].position.x - 1,
+                piecesStates[elementId].position.y + 2
+              );
+              validationChoice(
+                piecesStates[elementId].position.x + 1,
+                piecesStates[elementId].position.y + 2
+              );
+              validationChoice(
+                piecesStates[elementId].position.x - 2,
+                piecesStates[elementId].position.y - 1
+              );
+              validationChoice(
+                piecesStates[elementId].position.x - 2,
+                piecesStates[elementId].position.y + 1
+              );
+              validationChoice(
+                piecesStates[elementId].position.x + 2,
+                piecesStates[elementId].position.y - 1
+              );
+              validationChoice(
+                piecesStates[elementId].position.x + 2,
+                piecesStates[elementId].position.y + 1
+              );
               reservedActions[widgetWorkerId] = reservedActionsOfMe;
               reservedPieceId[widgetWorkerId] = elementId;
               updates = updates.concat(reservedActionsOfMe);
