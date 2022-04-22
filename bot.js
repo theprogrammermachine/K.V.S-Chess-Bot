@@ -57,7 +57,8 @@ let reservedPieceId = {};
           widgetId,
           widgetWorkerId,
           preview,
-          roomId
+          roomId,
+          true
         );
         if (status2 === "error") throw new Error("Could not init gui.");
         console.log("initialized gui succesfully");
@@ -93,7 +94,8 @@ let reservedPieceId = {};
             widgetId,
             widgetWorkerId,
             preview,
-            roomId
+            roomId,
+            true
           );
         });
         [0, 1, 2, 3, 4, 5, 6, 7].forEach((y) => {
@@ -112,7 +114,8 @@ let reservedPieceId = {};
               widgetId,
               widgetWorkerId,
               preview,
-              roomId
+              roomId,
+              true
             );
             console.log("attached click listener to block.");
           });
@@ -478,7 +481,8 @@ let reservedPieceId = {};
           widgetId,
           widgetWorkerId,
           preview,
-          roomId
+          roomId,
+          true
         );
       }
     );
